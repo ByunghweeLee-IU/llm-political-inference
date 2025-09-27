@@ -5,6 +5,9 @@ data/
 #ignore parquet
 *.parquet
 
+#ignore store file
+.DS_Store
+
 #exceptions: sample data
 !data_samples/**
 
