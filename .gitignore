@@ -1,0 +1,10 @@
+#ignore local data
+processed_data/
+data/
+
+#ignore parquet
+*.parquet
+
+#exceptions: sample data
+!data_samples/**
+
