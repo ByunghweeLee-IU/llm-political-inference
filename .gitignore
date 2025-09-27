@@ -5,7 +5,7 @@ data/
 #ignore parquet
 *.parquet
 
-#ignore store file
+#mac os system files
 .DS_Store
 
 #exceptions: sample data
