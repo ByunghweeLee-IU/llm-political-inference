@@ -17,5 +17,5 @@ data/
 
 # Python cache
 __pycache__/
-*.py[cod]
+*.pyc
 
