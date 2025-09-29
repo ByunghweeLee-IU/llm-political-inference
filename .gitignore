@@ -8,6 +8,9 @@ data/
 #mac os system files
 .DS_Store
 
+#ipynb checkpoints
+.ipynb_checkpoints/
+
 #exceptions: sample data
 !data_samples/**
 
