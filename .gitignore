@@ -11,6 +11,11 @@ data/
 #ipynb checkpoints
 .ipynb_checkpoints/
 
+
 #exceptions: sample data
 !data_samples/**
+
+# Python cache
+__pycache__/
+*.py[cod]
 
