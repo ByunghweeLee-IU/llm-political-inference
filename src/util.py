@@ -2,6 +2,73 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import f1_score
 
+def get_f1_over_conf(data, confidence_label, prediction_label, true_label):
+
+    '''
+    Calculate F1 scores across confidence
+    for error bar we use standard error of bootstrap 
+    '''
+    conf_list = np.arange(1,6) 
+    scores = []
+    errors = []
+    
+    party2bin = {"Democratic": 0, "Republican": 1}
+    df = data.copy()
+
+    #that fall within an appropriate range.
+    df = df[df[prediction_label].isin(party2bin.keys())]
+    df = df[df[confidence_label].isin(conf_list)]
+    
+    # Map labels to binary values
+    df['true_party_bin'] = df[true_label].map(party2bin) #0:dem, 1:rep
+    df['inferred_party_bin'] = df[prediction_label].map(party2bin) #0:dem, 1:rep
+    
+    
+    for i in conf_list:
+        df_ = df[df[confidence_label] == i]
+        
+        #bootstrap
+        bootstrapped_f1_scores = []
+        n_size = len(df_)
+
+        for _ in range(1000):
+            sample = df_.sample(n=n_size, replace=True) 
+            true_labels = sample['true_party_bin']
+            pred_labels = sample['inferred_party_bin']
+            f1 = f1_score(true_labels, pred_labels, average='macro')
+            bootstrapped_f1_scores.append(f1)
+
+        mean_f1 = np.mean(bootstrapped_f1_scores)    
+        std = np.std(bootstrapped_f1_scores)    
+
+    
+        scores.append(mean_f1)
+        errors.append(std)
+
+    return conf_list, scores, errors
+
+
+def get_conf_distribution(data, confidence_label, prediction_label, true_label):
+    '''get the distribution of confidence from a dataset.'''    
+    party2bin = {"Democratic": 0, "Republican": 1}
+    df = data.copy()
+
+    #that fall within an appropriate range.
+    df = df[df[prediction_label].isin(party2bin.keys())]
+    df[confidence_label] = df[confidence_label].astype(int) 
+    df = df[df[confidence_label].isin(np.arange(1,6))]
+
+    conf_freq = np.arange(5)
+
+    for e in df[confidence_label].values:
+        try:
+            conf_freq[e-1] += 1
+        except:
+            print(e)
+
+    return conf_freq / np.sum(conf_freq)
+    
+
 #Text-level and User-level inference based on LLM's inference results
 def get_text_level_score(df, col1='party_short', col2='party_out_gpt4o'):
     y = df[col1]

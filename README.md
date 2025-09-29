@@ -46,7 +46,7 @@ pip install -r requirements.txt
 
 
 ## Quickstart
-- Before opening `src/Main_results.ipynb`, download the preprocessed DDO and Reddit datasets.
+- Before opening `main_result.ipynb`, download the preprocessed DDO and Reddit datasets.
 
   - Option A (recommended): run from the repository root
     ```bash
@@ -59,8 +59,8 @@ pip install -r requirements.txt
   ```bash 
   jupyter notebook
   ```
-  * Select `belief` kernel in the jupyter Notebook.
-  * Open `Main_result.ipynb` 
+  * Select `llm-inference` kernel in the jupyter Notebook.
+  * Open `main_result.ipynb` 
 
 ## Hardware requirements
 
