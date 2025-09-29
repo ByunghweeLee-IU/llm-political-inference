@@ -16,7 +16,7 @@ Byunghwee Lee<sup>1,2,+</sup>, Sangyeon Kim<sup>2,+</sup>, Filippo Menczer<sup>2
 
 ## Introduction
  - This repository provides the source code necessary for reproducing the results presented in the paper.  
-- The core implementation of experimental results is found in **`src/Main_results.ipynb`**.  
+- The core implementation of experimental results is found in **`main_result.ipynb`**.  
 
 
 ## Installation
