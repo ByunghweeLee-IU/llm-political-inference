@@ -139,3 +139,79 @@ def user_level_f1_fourtypes(data, prediction_col, confidence_col, user_name_col=
     f1_max = f1_score(y_user, y_hat_max, average='macro')
 
     return text_level_f1, f1_majority, f1_weighted, f1_max
+
+
+
+## caculation of user level f1 score for each category 
+def user_level_category_f1(data, prediction_col, confidence_col, category_label=None, category=False, user_name_col='user_name', true_label_col='party_short'):
+
+    #Prepare data 
+    df = data.copy()
+
+    if category:
+        df = df[df[category_label]==category]
+        
+    ## Filter for valid predictions and confidence scores
+    party2bin = {"Democratic": 0, "Republican": 1}
+    df = df[df[prediction_col].isin(party2bin.keys())]
+    df = df[df[confidence_col].isin([1, 2, 3, 4, 5])]
+    
+    ## Map labels to binary values
+    df['true_party_bin'] = df[true_label_col].map(party2bin)
+    df['inferred_party_bin'] = df[prediction_col].map(party2bin)
+
+    category_size = len(df)
+    
+    # Text-level score 
+    text_level_f1 = get_text_level_score(df, col1=true_label_col, col2=prediction_col)
+
+    # User-level 
+    # Iterate over each user's data
+    y_user = df.groupby('user_name')['party_short'].first()  #true answer 
+
+    # majority    
+    y_hat_majority = df.groupby('user_name').apply(lambda x: majority_vote(x, prediction_col), include_groups=False)
+    f1_majority = f1_score(y_user, y_hat_majority, average='macro')
+    
+    y_hat_weighted = df.groupby('user_name').apply(lambda x: weighted_vote(x, prediction_col, confidence_col), include_groups=False)
+    f1_weighted = f1_score(y_user, y_hat_weighted, average='macro')
+    
+    y_hat_max = df.groupby('user_name').apply(lambda x: max_confidence_vote(x, prediction_col, confidence_col), include_groups=False)
+    f1_max = f1_score(y_user, y_hat_max, average='macro')
+
+    return text_level_f1, f1_majority, f1_weighted, f1_max, category_size
+
+
+## User participation similarity between categories 
+def calculate_jaccard(set1, set2):
+    intersection = len(set1.intersection(set2))
+    union = len(set1.union(set2))
+    return intersection / union if union != 0 else 0
+
+# Function to calculate Normalized Pointwise Mutual Information (NPMI)
+def calculate_pmi(set1, set2, total_users):
+    joint_prob = len(set1.intersection(set2)) / total_users
+    prob1 = len(set1) / total_users
+    prob2 = len(set2) / total_users
+    
+    # Ensure probabilities are greater than zero to avoid log of zero errors
+    if joint_prob > 0 and prob1 > 0 and prob2 > 0:
+        return np.log2(joint_prob / (prob1 * prob2))
+    else:
+        return 0
+
+def calculate_npmi(set1, set2, total_users):
+    joint_prob = len(set1.intersection(set2)) / total_users
+    prob1 = len(set1) / total_users
+    prob2 = len(set2) / total_users
+    
+    if joint_prob > 0:
+        pmi = np.log2(joint_prob / (prob1 * prob2))
+        npmi = pmi / -np.log2(joint_prob)
+        return npmi
+    else:
+        return -1
+
+
+    
+
