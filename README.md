@@ -54,8 +54,8 @@ pip install -r requirements.txt
   * Select `llm-inference` kernel in the jupyter Notebook.
   * Open `main_result.ipynb` 
 
-## Political party inference example code
-We provide two minimal examples to run political party inference on a single input text:
+## Example: Inferring Political Party and Confidence
+We provide two examples to run political party inference on a single input text:
 
 - **OpenAI GPT-based inference** (`src/party_inference_gpt.py`)  
 - **Llama HuggingFace model inference** (`src/party_inference_llama.py`)
