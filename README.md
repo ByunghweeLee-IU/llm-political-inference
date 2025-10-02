@@ -57,8 +57,8 @@ pip install -r requirements.txt
 ## Example: Inferring Political Party and Confidence
 We provide two examples to run political party inference on a single input text:
 
-- **OpenAI GPT-based inference** (`src/party_inference_gpt.py`)  
-- **Llama HuggingFace model inference** (`src/party_inference_llama.py`)
+- **OpenAI GPT-4o based inference** (`src/party_inference_gpt.py`)  
+- **Llama-3.1-8B HuggingFace model inference** (`src/party_inference_llama.py`)
 
 ### Run with GPT (requires OpenAI API key)
 ```bash
