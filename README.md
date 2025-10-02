@@ -21,7 +21,7 @@ Byunghwee Lee<sup>1,2,+</sup>, Sangyeon Kim<sup>2,+</sup>, Filippo Menczer<sup>2
 
 ## Installation
 
-Installation using [Miniconda](https://docs.conda.io/projects/continuumio-conda/en/latest/user-guide/install/index.html):
+Installation of environment and dependencies using [Miniconda](https://docs.conda.io/projects/continuumio-conda/en/latest/user-guide/install/index.html):
 
 ```bash
 git clone https://github.com/ByunghweeLee-IU/LLM-political-inference.git
@@ -30,6 +30,7 @@ conda create -y --name llm-inference python=3.8
 conda activate llm-inference
 pip install -r requirements.txt
 ```
+
 
 ## System requirements
 * **Software dependencies**:
@@ -61,6 +62,50 @@ pip install -r requirements.txt
   ```
   * Select `llm-inference` kernel in the jupyter Notebook.
   * Open `main_result.ipynb` 
+
+## Political party inference example code
+We provide two minimal examples to run political party inference on a single input text:
+
+- **OpenAI GPT-based inference** (`src/party_inference_gpt.py`)  
+- **Llama HuggingFace model inference** (`src/party_inference_llama.py`)
+
+### Run with GPT (requires OpenAI API key)
+```bash
+python src/party_inference_gpt.py
+```
+
+Example output:
+```json
+{"party": "Democratic", "confidence": 4}
+```
+
+### Run with Llama (requires HuggingFace token & GPU recommended)
+```bash
+python src/party_inference_llama.py
+```
+
+Example output:
+```json
+{"party": "Republican", "confidence": 5}
+```
+
+Both scripts will take a sample input text (e.g.,  
+*"I support expanding access to affordable healthcare and stricter climate policies."*)  
+and return a JSON object with the predicted party (`Democratic` or `Republican`) and a confidence score (1–5).
+
+
+## Project Structure
+
+```
+src/
+ ├── download_data.py            # Downloading Pre-processed dataset
+ ├── party_inference_gpt.py      # GPT-based single text inference
+ ├── party_inference_llama.py    # Llama-based single text inference
+ └── util.py                     # helper functions (metrics, utilities)
+main_result.ipynb
+requirements.txt                 # dependencies
+README.md                        # project documentation
+```
 
 ## Hardware requirements
 
