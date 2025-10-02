@@ -33,17 +33,8 @@ pip install -r requirements.txt
 
 
 ## System requirements
-* **Software dependencies**:
-  * Supported platforms: MacOS and Ubuntu (with Python 3.8)
-  * See requirements.txt for a complete list of necessary libraries.
-
-* **Tested Versions** 
-   * The following libraries have been tested with Python 3.8 or higher:
-     * `torch = 2.2.1`
-     * `sentence-transformers = 2.6.0`
-     * `pandas = 2.2.2`
-     * `numpy = 1.24.3`
-     * See `requirements.txt` for full list of necessary libraries. 
+* Supported platforms: MacOS and Ubuntu (with Python 3.8)
+* See requirements.txt for a complete list of necessary libraries.
 
 
 ## Quickstart
