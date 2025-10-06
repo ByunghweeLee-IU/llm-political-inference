@@ -59,17 +59,13 @@ We provide two examples to run political party inference on a single input text:
 	- Run with GPT (requires OpenAI API key) 
 		- ```python src/party_inference_gpt.py ```
 		- Example output: 
-			- ```json
-{"party": "Democratic", "confidence": 4}
-```
+			- ```json {"party": "Democratic", "confidence": 4} ```
 
 - **Llama-3.1-8B HuggingFace model inference** (`src/party_inference_llama.py`)
 	-  Run with Llama (requires HuggingFace token & GPU recommended)
 		- ```python src/party_inference_llama.py```
 		- Example output: 
-			- ```json
-{"party": "Republican", "confidence": 5}
-```
+			- ```json {"party": "Republican", "confidence": 5} ```
 
 Both scripts will take a sample input text (e.g., *"I support expanding access to affordable healthcare and stricter climate policies."*) and return a JSON object with the predicted party (`Democratic` or `Republican`) and a confidence score (1–5).
 
