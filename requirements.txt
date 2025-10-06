@@ -28,3 +28,7 @@ pydantic_core==2.33.2
 
 # OpenAI client
 openai==2.0.1
+
+# word analysis
+nltk==3.9.2
+wordcloud==1.9.4
