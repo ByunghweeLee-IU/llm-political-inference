@@ -18,6 +18,10 @@ Byunghwee Lee<sup>1,2,+</sup>, Sangyeon Kim<sup>2,+</sup>, Filippo Menczer<sup>2
  - This repository provides the source code necessary for reproducing the results presented in the paper.  
 - The core implementation of experimental results is found in **`main_result.ipynb`**.  
 
+## System requirements
+* Supported platforms: MacOS and Ubuntu (with Python 3.8)
+* See requirements.txt for a complete list of necessary libraries.
+
 
 ## Installation
 
@@ -32,12 +36,7 @@ pip install -r requirements.txt
 ```
 
 
-## System requirements
-* Supported platforms: MacOS and Ubuntu (with Python 3.8)
-* See requirements.txt for a complete list of necessary libraries.
-
-
-## Quickstart
+## Quickstart (Main results)
 - Before opening `main_result.ipynb`, download the preprocessed DDO and Reddit datasets.
 
   - Option A (recommended): run from the repository root
@@ -45,44 +44,32 @@ pip install -r requirements.txt
     python src/download_data.py
     ```
 
-  - Option B: download the files manually from the [Hugging Face dataset page](https://huggingface.co/datasets/Byunghwee/llm-inference-data)
+  - Option B: download the files manually from the [Hugging Face dataset page](https://huggingface.co/datasets/Byunghwee/llm-inference-data) and place the `llm-inference-data` folder inside the `data` directory located at the root of the repository.
 
 - After downloading the dataest, run the following code in terminal.
   ```bash 
   jupyter notebook
   ```
-  * Select `llm-inference` kernel in the jupyter Notebook.
-  * Open `main_result.ipynb` 
+  * Select `llm-inference` kernel in the jupyter Notebook and open `main_result.ipynb` 
 
-## Example: Inferring Political Party and Confidence
+## (Example) Inferring political party and confidence
 We provide two examples to run political party inference on a single input text:
 
 - **OpenAI GPT-4o based inference** (`src/party_inference_gpt.py`)  
-- **Llama-3.1-8B HuggingFace model inference** (`src/party_inference_llama.py`)
-
-### Run with GPT (requires OpenAI API key)
-```bash
-python src/party_inference_gpt.py
-```
-
-Example output:
-```json
+	- Run with GPT (requires OpenAI API key) 
+		- ```python src/party_inference_gpt.py ```
+		- Example output: ```json
 {"party": "Democratic", "confidence": 4}
 ```
 
-### Run with Llama (requires HuggingFace token & GPU recommended)
-```bash
-python src/party_inference_llama.py
-```
-
-Example output:
-```json
+- **Llama-3.1-8B HuggingFace model inference** (`src/party_inference_llama.py`)
+	-  Run with Llama (requires HuggingFace token & GPU recommended)
+		- ```python src/party_inference_llama.py```
+		- Example output: ```json
 {"party": "Republican", "confidence": 5}
 ```
 
-Both scripts will take a sample input text (e.g.,  
-*"I support expanding access to affordable healthcare and stricter climate policies."*)  
-and return a JSON object with the predicted party (`Democratic` or `Republican`) and a confidence score (1–5).
+Both scripts will take a sample input text (e.g., *"I support expanding access to affordable healthcare and stricter climate policies."*) and return a JSON object with the predicted party (`Democratic` or `Republican`) and a confidence score (1–5).
 
 
 ## Project Structure
@@ -93,6 +80,7 @@ src/
  ├── party_inference_gpt.py      # GPT-based single text inference
  ├── party_inference_llama.py    # Llama-based single text inference
  └── util.py                     # helper functions (metrics, utilities)
+data/
 main_result.ipynb
 requirements.txt                 # dependencies
 README.md                        # project documentation
