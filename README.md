@@ -40,14 +40,14 @@ pip install -r requirements.txt
 - Before opening `main_result.ipynb`, download the preprocessed DDO and Reddit datasets.
 
   - Option A (recommended): run from the repository root
-    ```bash
+    ```
     python src/download_data.py
     ```
 
   - Option B: download the files manually from the [Hugging Face dataset page](https://huggingface.co/datasets/Byunghwee/llm-inference-data) and place the `llm-inference-data` folder inside the `data` directory located at the root of the repository.
 
 - After downloading the dataest, run the following code in terminal.
-  ```bash 
+  ``` 
   jupyter notebook
   ```
   * Select `llm-inference` kernel in the jupyter Notebook and open `main_result.ipynb` 
@@ -58,14 +58,16 @@ We provide two examples to run political party inference on a single input text:
 - **OpenAI GPT-4o based inference** (`src/party_inference_gpt.py`)  
 	- Run with GPT (requires OpenAI API key) 
 		- ```python src/party_inference_gpt.py ```
-		- Example output: ```json
+		- Example output: 
+			- ```json
 {"party": "Democratic", "confidence": 4}
 ```
 
 - **Llama-3.1-8B HuggingFace model inference** (`src/party_inference_llama.py`)
 	-  Run with Llama (requires HuggingFace token & GPU recommended)
 		- ```python src/party_inference_llama.py```
-		- Example output: ```json
+		- Example output: 
+			- ```json
 {"party": "Republican", "confidence": 5}
 ```
 
