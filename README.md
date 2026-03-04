@@ -1,6 +1,6 @@
 # LLM-Political-Inference
 
-This repository contains the source code and dataset used in the study: **LLMs Can Infer Hidden Political Alignment of Online Users from General Conversations**
+This repository contains the source code and dataset used in the study: **LLMs Can Infer Political Alignment from Online Conversations**
 
 
 **Authors**:  
