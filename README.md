@@ -4,10 +4,11 @@ This repository contains the source code and dataset used in the study: **LLMs C
 
 
 **Authors**:  
-Byunghwee Lee<sup>1,2,+</sup>, Sangyeon Kim<sup>2,+</sup>, Filippo Menczer<sup>2</sup>, Yong-Yeol Ahn<sup>1,2,\*</sup>, Haewoon Kwak<sup>2,\*</sup>, Jisun An<sup>2,\*</sup>  
+Byunghwee Lee<sup>1,2,+</sup>, Sangyeon Kim<sup>2,3+</sup>, Filippo Menczer<sup>2</sup>, Yong-Yeol Ahn<sup>1,2,\*</sup>, Haewoon Kwak<sup>2,\*</sup>, Jisun An<sup>2,\*</sup>  
 
 <sup>1</sup> <sub>School of Data Science, Charlottesville, Virginia, USA.</sub>
 <sup>2</sup> <sub>Center for Complex Networks and Systems Research, Luddy School of Informatics, Computing, and Engineering, Indiana University, Bloomington, Indiana, USA.</sub>
+<sup>3</sup> <sub>Division of Communication and Media, Ewha Womans University, Seoul, Republic of Korea</sub>
 
 <sup>+</sup> <sub>These authors contributed equally to this work. </sub>
 
