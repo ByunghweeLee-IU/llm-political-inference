@@ -8,7 +8,7 @@ HF_DATASET_REPO = "Byunghwee/llm-inference-data"
 TARGET_DIR = Path(__file__).resolve().parents[1] / "data" / "llm-inference-data"
 
 def main():
-    token = os.getenv("HF_TOKEN", None)  # private이면 필요
+    token = os.getenv("HF_TOKEN", None)  
     TARGET_DIR.mkdir(parents=True, exist_ok=True)
     print(f"[info] Downloading from hf://{HF_DATASET_REPO} -> {TARGET_DIR}")
 
@@ -17,7 +17,7 @@ def main():
             repo_id=HF_DATASET_REPO,
             repo_type="dataset",
             local_dir=str(TARGET_DIR),
-            local_dir_use_symlinks=False,  # 실제 파일 복사
+            local_dir_use_symlinks=False,  
             token=token,
         )
     except Exception as e:
