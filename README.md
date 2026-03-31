@@ -39,7 +39,8 @@ pip install -r requirements.txt
 ```
 
 
-## Quickstart (Main results)
+
+## Quick start (Main results)
 - Before opening `main_result.ipynb`, download the preprocessed DDO and Reddit datasets.
 
   - Option A (recommended): run from the repository root
@@ -72,6 +73,14 @@ We provide two examples to run political party inference on a single input text:
 
 Both scripts will take a sample input text (e.g., *"I support expanding access to affordable healthcare and stricter climate policies."*) and return a JSON object with the predicted party (`Democratic` or `Republican`) and a confidence score (1–5).
 
+## Data availability
+
+- **Debate.org (DDO) dataset**:  
+  The processed DDO dataset for this study is publicly available and fully included in this repository for reproducibility (See Quick start).
+
+- **Reddit dataset**:  
+  In accordance with Reddit’s data usage policies, we do not redistribute raw Reddit content. We provide only processed and anonymized data (without user text) along with inference results necessary for reproducibility.
+  
 
 ## Project Structure
 
